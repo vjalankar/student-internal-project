@@ -12,7 +12,8 @@ class HandleLogin extends BaseController
     {
 
         $db = \Config\Database::connect();
-
+        session_start();
+    
     }
 
 
@@ -36,6 +37,9 @@ class HandleLogin extends BaseController
 
 
         $userLoginModel = new userLoginModel();
+
+        $_SESSION['user']=$userEmail;
+
 
 
 
@@ -74,13 +78,10 @@ class HandleLogin extends BaseController
         $division=$this->request->getVar("division"); 
         
         
-
-
-
-        
-    
+        return view('show_Data');
     }
 
+    
 
    
 }
