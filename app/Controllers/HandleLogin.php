@@ -11,7 +11,7 @@ class HandleLogin extends BaseController
     public function __construct()
     {
 
-        
+        $db = \Config\Database::connect();
 
     }
 
@@ -53,12 +53,16 @@ class HandleLogin extends BaseController
         }
     }
 
+   
+
     public function showUserDashboard()
     {
 
         $Model = new userDetails();
         $row['data']=$Model->findAll();
-        print_r($row);
+        
+        
+       
         return view('user_dashboard',$row);    
     }
 
@@ -69,14 +73,8 @@ class HandleLogin extends BaseController
         $branch=$this->request->getVar("branch");
         $division=$this->request->getVar("division"); 
         
+        
 
-        $data=array('trisemester'=>$trisemester, 'branch'=>$branch, 'division'=>$division);
-
-        $model=new userDetails();
-
-        $row['data']=$model->findAll();
-
-        return view('user_dashboard',$row);
 
 
         
@@ -84,4 +82,5 @@ class HandleLogin extends BaseController
     }
 
 
+   
 }
