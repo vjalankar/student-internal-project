@@ -57,7 +57,17 @@ class HandleLogin extends BaseController
         }
     }
 
-   
+   public function team(){
+
+    return view('team');
+
+
+   }
+
+   public function contact(){
+
+    return view('contact');
+   }
 
     public function showUserDashboard()
     {

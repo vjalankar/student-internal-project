@@ -24,10 +24,10 @@
           <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Team</a>
+          <a class="nav-link" href="/team">Team</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Projects</a>
+          <a class="nav-link" href="/contact">Contact us</a>
         </li>
       </ul>
       <!-- Left links -->
