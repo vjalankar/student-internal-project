@@ -33,7 +33,7 @@
 
         <!--Grid column-->
         <div class="col-md-9 mb-md-0 mb-5">
-            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+            <form id="form" name="contact-form"  method="POST">
 
                 <!--Grid row-->
                 <div class="row">
@@ -95,7 +95,7 @@
             </form>
 
             <div class="text-center text-md-left">
-                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
+                <a class="btn btn-primary" onclick="data();">Send</a>
             </div>
             <div class="status"></div>
         </div>
@@ -128,6 +128,18 @@
 
 
 <?php include 'include_files/footer.php' ?>
+
+
+<script>
+
+function data()
+{
+    
+    document.getElementById("form").reset();
+    alert('feedback saved');
+}
+
+</script>
 
 </body>
 </html>
