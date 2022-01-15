@@ -15,7 +15,7 @@
 
 <div class="container">
 
-
+<?php include 'include_files/navbar.php' ?>
 
 
 <br>
@@ -61,6 +61,8 @@
 
 </div>
 
+<br>
+<br>
 
 <?php include 'include_files/footer.php' ?>
 

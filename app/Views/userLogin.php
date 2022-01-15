@@ -14,7 +14,6 @@
 
 <div class="container">
 
-<?php include 'include_files/navbar.php' ?>
 
 
 <div class="shadow p-4">
@@ -57,6 +56,8 @@
 </div>
 
 </div>
+<br>
+<br>
 
 <?php include 'include_files/footer.php' ?>
 

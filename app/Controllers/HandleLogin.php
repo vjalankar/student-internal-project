@@ -24,8 +24,7 @@ class HandleLogin extends BaseController
 
         $row['data']=$model->findAll();
 
-        print_r($row);
-
+   
         return view('userLogin',$row);
     }
 
