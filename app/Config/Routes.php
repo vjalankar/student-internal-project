@@ -37,6 +37,9 @@ $routes->get('/user_dashboard',"HandleLogin::showUserDashboard");
 $routes->get('/Login',"HandleLogin::index");
 $routes->get('/userDashboard',"HandleLogin::showUserDashboard");
 $routes->get('/storeDetails','HandleLogin::storeUserDetails');
+$routes->get('/admin','HomeAdmin::index');
+$routes->get('/admin/Login',"HandleLogin::Login");
+$routes->get('/Admin/AdminDashboard',"HomeAdmin::showAdminDashboard");
 
 
 /*

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
     <title>Document</title>
-    
-    <?php include 'include_files/css.php' ?>
+  
+  <?php include 'include_files/css.php'; ?>
 
 </head>
 <body>
@@ -16,6 +16,7 @@
 
 <?php include 'include_files/navbar.php' ?>
 
+<br><br>
 
 <div class="shadow p-4">
 
@@ -28,7 +29,7 @@
 
 <h3 class="h3 text-center">Login</h3>
 
-<form class="form" action="<?php echo site_url('HandleLogin/Login') ?>" method="POST">
+<form class="form" action="<?php echo site_url('HomeAdmin/Login') ?>" method="POST">
   <div class="mb-3">
     Enter Email -: 
     <br>
@@ -42,6 +43,7 @@
   <input type="password" required name="userPassword" class="form-control" id="exampleInputPassword1">
   </div>
  
+  <br>
  
  <div class="d-flex justify-content-between">
  <input type="submit" name="submit" class="btn btn-outline-primary" value="Login" />
@@ -58,7 +60,14 @@
 
 </div>
 
-<?php include 'include_files/footer.php' ?>
+<br>
+<br>
+<br>
+
+
+
+
+<?php include 'include_files/footer.php'; ?>
 
 
 </div>
@@ -67,6 +76,8 @@
 
 
 
+
+<!-- MDB -->
 
 
 </body>
