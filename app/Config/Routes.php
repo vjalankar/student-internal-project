@@ -42,6 +42,7 @@ $routes->get('/admin/Login',"HandleLogin::Login");
 $routes->get('/Admin/AdminDashboard',"HomeAdmin::showAdminDashboard");
 $routes->get('/team','HandleLogin::team');
 $routes->get('/contact','HandleLogin::contact');
+$routes->get('/About Us','HandleLogin::aboutUs');
 
 /*
  * --------------------------------------------------------------------

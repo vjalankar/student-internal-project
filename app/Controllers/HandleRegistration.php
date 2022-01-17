@@ -2,13 +2,16 @@
 
 namespace App\Controllers;
 use App\Models\userLoginModel;
+use App\Helpers\html;
+
 
 class HandleRegistration extends BaseController
 {
     public function index()
     {
+        
         return view('register');
-          
+
 
 
     }

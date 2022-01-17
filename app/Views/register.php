@@ -15,34 +15,36 @@
 
 <div class="container">
 
-<?php include 'include_files/navbar.php' ?>
 
 
 <br>
-
-<div class="shadow p-4">
-
+<br>
+<br>
 <br>
 <br>
 
-<div class="row ">
 
-<div class="col-md-6 mx-auto my-auto">
 
-<h3 class="h3 text-center">register user</h3>
+
+
+<div class="row">
+
+<div class="col-md-6 mx-auto my-auto shadow p-4 ">
+
+<h3 class="h3 text-center">Register User</h3>
 
 <form class="form" action="<?php echo site_url('HandleRegistration/registerUser') ?>" method="POST">
   <div class="mb-3">
     Enter Email -: 
     <br>
-    <input type="email" required  name="userEmail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="email" required="true"  name="userEmail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div class="mb-3">
   
   Enter Password -:
   <br>
-  <input type="password" required name="userPassword" class="form-control" id="exampleInputPassword1">
+  <input type="password" required="true" name="userPassword" class="form-control" id="exampleInputPassword1">
   </div>
  
  
@@ -50,8 +52,13 @@
  <input type="submit" name="submit" class="btn btn-outline-primary" value="register" />
  <button type="reset" class="btn btn-outline-warning">Reset</button>
 
+  
+
  </div>
  
+ <br>
+
+ <a href="/Login" style="float: right">Alerady Having Accout? Click here to Login</a>
  
 </form> 
 
@@ -59,18 +66,18 @@
 
 </div>
 
-</div>
+
 
 <br>
 <br>
+
+
+</div>
+
+
+
 
 <?php include 'include_files/footer.php' ?>
-
-</div>
-
-
-
-
 
 
 

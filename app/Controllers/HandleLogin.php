@@ -62,6 +62,12 @@ class HandleLogin extends BaseController
 
 
    }
+   
+   public function aboutUs(){
+
+    return view('About Us');
+
+   }
 
    public function contact(){
 

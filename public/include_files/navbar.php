@@ -26,6 +26,11 @@
         <li class="nav-item">
           <a class="nav-link" href="/team">Team</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/About Us">About Us</a>
+        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="/contact">Contact us</a>
         </li>

@@ -24,7 +24,11 @@
     <br>
 
 
+<div class="shadow mx-auto my-auto p-5">
 
+<h3 class='h3 text-center'>Student's Data</h3>
+
+<hr>
 
 <table class="table table-bordered table-striped table-hover text-center">
   <thead>
@@ -53,7 +57,7 @@
   </tbody>
 </table>
     
-
+</div>
 <br>
 
 <?php include 'include_files/footer.php'?>
