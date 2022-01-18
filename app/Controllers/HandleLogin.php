@@ -96,7 +96,17 @@ class HandleLogin extends BaseController
         return view('show_Data');
     }
 
-    
+    // public function tryTOReadData()
+    // {
+
+    //     $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+    //     $spreadsheet = $reader->load("NSE.xlsx");
+
+    //     echo $spreadsheet;
+
+    // }
+
+
 
    
 }

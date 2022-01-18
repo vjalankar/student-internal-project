@@ -78,12 +78,12 @@
           class="dropdown-menu dropdown-menu-end"
           aria-labelledby="navbarDropdownMenuAvatar"
         >
-          <li>
+          <!-- <li>
             <a class="dropdown-item" href="#">My profile</a>
-          </li>
+          </li> -->
 
           <li>
-            <a class="dropdown-item" href="#">Logout</a>
+            <a class="dropdown-item" href="/Login">Logout</a>
           </li>
         </ul>
       </div>

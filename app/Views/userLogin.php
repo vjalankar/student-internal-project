@@ -21,9 +21,6 @@
     <br>
     <br>
 
-
-
-
     <div class="row ">
 
       <div class="col-md-6 mx-auto my-auto shadow p-5">

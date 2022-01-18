@@ -34,7 +34,7 @@
   <h3 class="text-center h3 ">Select Execl File to upload:</h3>
 <hr>
 
-  <input type="file" class="form-control" name="fileToUpload" id="fileToUpload">
+  <input type="file" class="form-control" required="true" name="fileToUpload" id="fileToUpload">
   <br>
  <center>
 
@@ -45,12 +45,25 @@
 
 
 
-</div>
 
 
 </div>
 
 
+</div>
+
+
+<table>
+
+
+
+<tr>
+
+
+</tr>
+
+
+</table>
 
 </div>
 
