@@ -61,7 +61,7 @@ class HomeAdmin extends BaseController
 
        
         $reader = IOFactory::createReader("Xlsx");
-        $reader->setReadFilter($filterSubset);
+      
         $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load("uploads/Book1.xlsx");
         $db      = \Config\Database::connect();
         $builder = $db->table('excel_data');
