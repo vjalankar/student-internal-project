@@ -52,18 +52,16 @@ class HomeAdmin extends BaseController
   
   alert('Sorry, your file was not uploaded')
   </script>";
-    } 
-    
-  else {
+    } else {
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "<script>
     
     alert('The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded');
     </script>";
 
-       
+
         $reader = IOFactory::createReader("Xlsx");
-      
+
         $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load("uploads/Book1.xlsx");
         $db      = \Config\Database::connect();
         $builder = $db->table('excel_data');
@@ -71,104 +69,94 @@ class HomeAdmin extends BaseController
         //$dataFromFile['fileData']=$spreadsheet->getWorksheetIterator();
         $con = mysqli_connect("localhost", "root", "", "student_internal");
 
-        $row=$spreadsheet->getActiveSheet()->toArray();
+        $row = $spreadsheet->getActiveSheet()->toArray();
 
-        $sheetCount=count($row);
+        $sheetCount = count($row);
 
-       if($sheetCount>1)
-       {
+        if ($sheetCount > 1) {
 
-        $data=array();
-        for($i=1;$i<$sheetCount;$i++)
-        
-        {
-       echo  $name=$row[$i][0];
-        echo $trisemester=$row[$i][1];
-            echo $branch=$row[$i][2];
-            echo $division=$row[$i][3];
-            echo $subjects=$row[$i][4];
-            echo $marks=$row[$i][5];
-        
-            $data[]=array(
+          $data = array();
+          for ($i = 1; $i < $sheetCount; $i++) {
+            echo  $name = $row[$i][0];
+            echo $trisemester = $row[$i][1];
+            echo $branch = $row[$i][2];
+            echo $division = $row[$i][3];
+            echo $subjects = $row[$i][4];
+            echo $marks = $row[$i][5];
 
-              'name'=>$name,
-              'trisemester' =>$trisemester,
-              'branch'=>$branch,
-              'division'=>$division,
-              'subjects'=>$subjects,
-               'marks'=>$marks,
+            $data[] = array(
+
+              'name' => $name,
+              'trisemester' => $trisemester,
+              'branch' => $branch,
+              'division' => $division,
+              'subjects' => $subjects,
+              'marks' => $marks,
 
             );
 
-            $query="insert into excel_data(name,trisemester,branch,division,subjects,marks) values('$name','$trisemester','$branch','$division','$subjects','$marks')";
-            $result=mysqli_query($con,$query);
-            if($result)
-            {
+            $query = "insert into excel_data(name,trisemester,branch,division,subjects,marks) values('$name','$trisemester','$branch','$division','$subjects','$marks')";
+            $result = mysqli_query($con, $query);
+            if ($result) {
               echo "success";
-            }  
-            else{
+            } else {
               echo "failed";
             }
-       
+          }
         }
-       
-      }  
 
 
 
 
-    
-
-    //     foreach ($data as $row)
-    // {
-        
-    //     echo $name=$row['0'];
-    //     echo $trisemester=$row['1'];
-    //     echo $branch=$row['2'];
-    //     echo $division=$row['3'];
-    //     echo $subjects=$row['4'];
-    //     echo $Marks=$row['5'];
-
-             
-    //     if($name==''){
-    //       echo "can not insert further values";
-    //       break;
-
-    //     }
-
-        
-    //     $query="insert into excel_data(name,trisemester,branch,division,subjects,marks) values('$name','$trisemester','$branch','$division','$subjects','$Marks')";
-    //     $result=mysqli_query($con,$query);
-      
 
 
-    //     if($result)
-    //     {
-    //       echo "success";
-    //     }
-        
-    //     else{
-    //       echo "fail";
-    //     }
-        
+        //     foreach ($data as $row)
+        // {
 
-      
+        //     echo $name=$row['0'];
+        //     echo $trisemester=$row['1'];
+        //     echo $branch=$row['2'];
+        //     echo $division=$row['3'];
+        //     echo $subjects=$row['4'];
+        //     echo $Marks=$row['5'];
+
+
+        //     if($name==''){
+        //       echo "can not insert further values";
+        //       break;
+
+        //     }
+
+
+        //     $query="insert into excel_data(name,trisemester,branch,division,subjects,marks) values('$name','$trisemester','$branch','$division','$subjects','$Marks')";
+        //     $result=mysqli_query($con,$query);
+
+
+
+        //     if($result)
+        //     {
+        //       echo "success";
+        //     }
+
+        //     else{
+        //       echo "fail";
+        //     }
+
+
+
         //return view('/Admin/Admin_dashboard');
 
-    
 
 
-    //    else {
-    //     echo "<script>
-    
-    // alert(' Sorry, there was an error uploading your file. ')
-    // </script>";
-      
+
+        //    else {
+        //     echo "<script>
+
+        // alert(' Sorry, there was an error uploading your file. ')
+        // </script>";
+
+      }
     }
-  
-    }
-
-  
   }
 
 

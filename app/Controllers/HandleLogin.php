@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\userLoginModel;
 use App\Models\userDetails;
+use App\Models\excel_model;
 
 class HandleLogin extends BaseController
 {
@@ -13,7 +14,6 @@ class HandleLogin extends BaseController
 
         $db = \Config\Database::connect();
         session_start();
-    
     }
 
 
@@ -22,10 +22,10 @@ class HandleLogin extends BaseController
 
         $model = new userDetails();
 
-        $row['data']=$model->findAll();
+        $row['data'] = $model->findAll();
 
-   
-        return view('userLogin',$row);
+
+        return view('userLogin', $row);
     }
 
     public function Login()
@@ -37,7 +37,7 @@ class HandleLogin extends BaseController
 
         $userLoginModel = new userLoginModel();
 
-        $_SESSION['user']=$userEmail;
+        $_SESSION['user'] = $userEmail;
 
 
 
@@ -56,43 +56,56 @@ class HandleLogin extends BaseController
         }
     }
 
-   public function team(){
+    public function team()
+    {
 
-    return view('team');
+        return view('team');
+    }
 
+    public function aboutUs()
+    {
 
-   }
-   
-   public function aboutUs(){
+        return view('About Us');
+    }
 
-    return view('About Us');
+    public function contact()
+    {
 
-   }
-
-   public function contact(){
-
-    return view('contact');
-   }
+        return view('contact');
+    }
 
     public function showUserDashboard()
     {
 
-        $Model = new userDetails();
-        $row['data']=$Model->findAll();
-        
-        
-       
-        return view('user_dashboard',$row);    
+        $Model = new excel_model();
+        $row['data'] = $Model->findAll();
+
+
+
+        return view('user_dashboard', $row);
     }
 
 
     public function storeUserDetails()
     {
-        $trisemester=$this->request->getVar("trisemester");
-        $branch=$this->request->getVar("branch");
-        $division=$this->request->getVar("division"); 
-        
-        
+        $trisemester = $this->request->getVar("trisemester");
+        $branch = $this->request->getVar("branch");
+        $division = $this->request->getVar("division");
+
+
+
+        // $model=new excel_model();
+
+        // $data= array('trisemester'=>$trisemester);
+
+        // $query = $model->where($data);
+
+        // $row['data']=$query->findAll();        
+
+        $_SESSION['trisemester'] = $trisemester;
+        $_SESSION['branch'] = $branch;
+        $_SESSION['division'] = $division;
+
         return view('show_Data');
     }
 
@@ -108,5 +121,5 @@ class HandleLogin extends BaseController
 
 
 
-   
+
 }
