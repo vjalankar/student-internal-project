@@ -21,32 +21,12 @@ class HomeAdmin extends BaseController
     $target_dir = 'uploads/';
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
+    
     // Check if image file is a actual image or fake image
     if (isset($_POST["submit"])) {
-    }
+   
 
-    // Check if file already exists
-    // if (file_exists($target_file)) {
-    //   echo "<div class='alert alert-info'> Sorry, file already exists.</div>";
-    //   $uploadOk = 0;
-    // }
-
-    // Check file size
-    // if ($_FILES["fileToUpload"]["size"] > 500000) {
-    //   echo "<div class='alert alert-info'>Sorry, your file is too large</div>";
-    //   $uploadOk = 0;
-    // }
-
-    // Allow certain file formats
-    // if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    // && $imageFileType != "gif" ) {
-    //   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-    //   $uploadOk = 0;
-    // }
-
-    // Check if $uploadOk is set to 0 by an error
+   
     if ($uploadOk == 0) {
       echo "<script>
   
@@ -62,7 +42,7 @@ class HomeAdmin extends BaseController
 
         $reader = IOFactory::createReader("Xlsx");
 
-        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load("uploads/Book1.xlsx");
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load("uploads/teacher_template.xlsx");
         $db      = \Config\Database::connect();
         $builder = $db->table('excel_data');
 
@@ -77,25 +57,31 @@ class HomeAdmin extends BaseController
 
           $data = array();
           for ($i = 1; $i < $sheetCount; $i++) {
-            echo  $name = $row[$i][0];
-            echo $trisemester = $row[$i][1];
-            echo $branch = $row[$i][2];
-            echo $division = $row[$i][3];
-            echo $subjects = $row[$i][4];
-            echo $marks = $row[$i][5];
+            echo  $Roll_no  = $row[$i][0];
 
-            $data[] = array(
+            echo $prn = $row[$i][1];
+            echo $subjects = $row[$i][2];
+            echo $Assignment = $row[$i][3];
+            echo $class_participation = $row[$i][4];
+            echo $case_study = $row[$i][5];
+            echo $surprise_test_1 = $row[$i][6];
+            echo $converted = $row[$i][7];
+            echo $surprise_test_2 = $row[$i][8];
+            echo $converted_surprise_test_2 = $row[$i][9];
+            echo $Total = $row[$i][10];
 
-              'name' => $name,
-              'trisemester' => $trisemester,
-              'branch' => $branch,
-              'division' => $division,
-              'subjects' => $subjects,
-              'marks' => $marks,
+            // $data[] = array(
 
-            );
+            //   'PRN' => $PRN,
+            //   'subject' => $subject,
+            //   'branch' => $branch,
+            //   'division' => $division,
+            //   'subjects' => $subjects,
+            //   'marks' => $marks,
 
-            $query = "insert into excel_data(name,trisemester,branch,division,subjects,marks) values('$name','$trisemester','$branch','$division','$subjects','$marks')";
+            // );
+
+            $query = "insert into excel_data(Roll_no,prn_no,subjects,Assignment,Class Participation ,Case Study,Surprise Test 01,Converted,Surprise Test 02,onverted_surprise_test_2,Total) values('$Roll_no','$prn','$subjects','$Assignment','$class_participation','$case_study','$surprise_test_1','$converted','$surprise_test_2','$converted_surprise_test_2','$Total')";
             $result = mysqli_query($con, $query);
             if ($result) {
               echo "success";
@@ -106,7 +92,7 @@ class HomeAdmin extends BaseController
         }
 
 
-
+      }
 
 
 
@@ -187,6 +173,9 @@ class HomeAdmin extends BaseController
   public function showAdminDashboard()
   {
     //   $target_dir = 'uploads/';
+
+
+
 
     return view('/Admin/Admin_dashboard');
   }

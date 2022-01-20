@@ -32,7 +32,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 //$routes->get('/', 'Home::index');
-$routes->get('/', 'HandleRegistration::index');
+$routes->get('/', 'HandleLogin::index');
 $routes->get('/user_dashboard',"HandleLogin::showUserDashboard");
 $routes->get('/Login',"HandleLogin::index");
 $routes->get('/userDashboard',"HandleLogin::showUserDashboard");
@@ -43,6 +43,7 @@ $routes->get('/Admin/AdminDashboard',"HomeAdmin::showAdminDashboard");
 $routes->get('/team','HandleLogin::team');
 $routes->get('/contact','HandleLogin::contact');
 $routes->get('/About Us','HandleLogin::aboutUs');
+$routes->get('/superAdmin','SuperAdmin::index');
 
 /*
  * --------------------------------------------------------------------

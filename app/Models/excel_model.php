@@ -11,9 +11,7 @@ class excel_model extends Model
     protected $allowedFields=['name','trisemester','branch','division','subjects','marks'];
 
     public function insert_batch($data){
-
-
-      //  $db=App\Config\Database::connect();
+    
         if($this->db->affectedRows()>0){
 
             return 1;

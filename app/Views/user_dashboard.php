@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <?php
 
-$con = mysqli_connect("localhost", "root", "", "student_internal");
-?>
+$con = mysqli_connect("localhost", "root", "", "student_internal");?>
 <html lang="en">
 
 <head>
@@ -64,51 +63,8 @@ $con = mysqli_connect("localhost", "root", "", "student_internal");
          
           <br>
 
-          select branch -:
-
-
-          <select class="form-control" id="branch" name="branch">
-            <?php
-
-
-
-            $query = "select distinct branch from excel_data ";
-
-            $result = mysqli_query($con, $query);
-
-            while ($row = mysqli_fetch_array($result)) {
-
-            ?>
-
-
-
-              <option value="<?php echo $row['branch']; ?>"><?php echo $row['branch']; ?></option>
-
-            <?php } ?>
-          </select>
-
-          <br>
-
-          Selec Division -:
-          <br>
-          <select class="form-control" id="division" name="division">
-            <?php
-
-
-            $query = "select distinct division from excel_data";
-
-            $result = mysqli_query($con, $query);
-
-            while ($row = mysqli_fetch_array($result)) {
-
-            ?>
-
-              <option value="<?php echo $row['division']; ?>"><?php echo $row['division']; ?></option>
-
-            <?php } ?>
-          </select>
-
-          <br>
+         
+         
 
           <center><input type="submit" name="submit" value="submit" class="btn btn-outline-primary" /></center>
 
@@ -136,12 +92,3 @@ $con = mysqli_connect("localhost", "root", "", "student_internal");
 
 </html>
 
-<script>
-  function fetchBrach() {
-
-    <?php echo base_url(); ?>HandleLogin / fetchBrach
-
-
-
-  }
-</script>
