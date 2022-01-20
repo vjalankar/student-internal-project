@@ -33,7 +33,7 @@
 
       <div class="card shadow p-2" style="background:darkgrey">
         <div class="col-sm-6 mx-auto my-auto p-3">
-          <form class="form p-1" action="<?php echo site_url('HomeAdmin/upload'); ?>" method="post"" enctype=" multipart/form-data">
+          <form class="form p-1" action="<?php echo site_url('HomeAdmin/upload'); ?>" method="post" enctype="multipart/form-data">
 
 
 
