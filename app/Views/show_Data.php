@@ -5,10 +5,9 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width= , initial-scale=1.0">
-  <title>Document</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+  <meta name="viewport" content="width", initial-scale=1.0">
+  <title>Student Portal</title>
+  
   <?php include 'include_files/css.php' ?>
 
 </head>
@@ -45,11 +44,9 @@
           <th scope="col">Surprise Test 2 Marks Converted</th>
           <th scope="col">Total</th>
 
-
-
-        </tr>
-      </thead>
-      <tbody>
+    </tr>
+    </thead>
+    <tbody>
         <?php
 
         $con = mysqli_connect("localhost", "root", "", "student_internal");
@@ -65,7 +62,7 @@
 
         $query = "select * from excel_data where prn_no='$prn_no'";
 
-        echo $query;
+         
 
         $i = 1;
 
@@ -75,8 +72,7 @@
 
 
         while ($data = mysqli_fetch_array($result)) { ?>
-
-          <tr>
+        <tr>
             <td><?php echo $i++; ?></td>
             <td><?php echo $data['subjects']; ?></td>
             <td><?php echo $data['Assignment']; ?></td>
@@ -88,7 +84,7 @@
             <td><?php echo $data['converted_surprise_test_2']; ?></td>
             <td><?php echo $data['Total']; ?></td>
 
-          </tr>
+        </tr>
 
         <?php } ?>
       </tbody>

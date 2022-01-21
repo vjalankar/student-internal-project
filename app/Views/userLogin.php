@@ -16,12 +16,7 @@
 
   <div class="container">
 
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <div class="row ">
+    <div class="row my-5">
 
       <div class="col-md-6 mx-auto my-auto shadow p-5">
 
@@ -36,18 +31,18 @@
           </div>
           <div class="mb-3">
 
-            Enter Password -:
+          Enter Password -:
             <br>
             <input type="password" required name="userPassword" class="form-control" id="exampleInputPassword1">
+          
           </div>
 
 
-          <div class="d-flex justify-content-between">
-            <input type="submit" name="submit" class="btn btn-outline-primary" value="Login" />
-            <button type="reset" class="btn btn-outline-warning">Reset</button>
-
-          </div>
-
+          
+         <center>
+          <input type="submit" name="submit" class="btn btn-outline-primary" value="Login" />
+         </center>
+          
 
         </form>
 
