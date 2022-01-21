@@ -35,11 +35,15 @@
       <thead>
         <tr>
           <th scope="col">Sr No </th>
-          <th scope="col">name</th>
-          <th scope="col">Trisemester</th>
-          <th scope="col">Branch</th>
           <th scope="col">Subject</th>
-          <th scope="col">Marks</th>
+          <th scope="col">Assignment</th>
+          <th scope="col">Class Participation</th>
+          <th scope="col">Case Study</th>
+          <th scope="col">Surprise_Test_01</th>
+          <th scope="col">Converted</th>
+          <th scope="col">Surprise_Test_02</th>
+          <th scope="col">Surprise Test 2 Marks Converted</th>
+          <th scope="col">Total</th>
 
 
 
@@ -49,36 +53,40 @@
         <?php
 
         $con = mysqli_connect("localhost", "root", "", "student_internal");
-        $trisemester = $_SESSION['trisemester'];
-        $branch = $_SESSION['branch'];
-        $division = $_SESSION['division'];
+        $prn_no = $_SESSION['prn_no'];
+
+        //echo $prn_no;
 
 
+        if ($prn_no == null) {
+          echo "login first";
+          return redirect()->to(base_url('/Login'));
+        }
 
-        $query = "select * from excel_data where branch='$branch' and trisemester='$trisemester' and division='$division'";
+        $query = "select * from excel_data where prn_no='$prn_no'";
 
+        echo $query;
 
         $i = 1;
 
         $result = mysqli_query($con, $query);
 
-         if(!$result){
+        mysqli_error($con);
 
-          echo "<div class='alert alert-warning'>No data to display.</div>";
-
-         } 
 
         while ($data = mysqli_fetch_array($result)) { ?>
 
           <tr>
             <td><?php echo $i++; ?></td>
-            <td><?php echo $data['name']; ?></td>
-            <td><?php echo $data['trisemester']; ?></td>
-            <td><?php echo $data['branch']; ?></td>
             <td><?php echo $data['subjects']; ?></td>
-            <td><?php echo $data['marks']; ?></td>
-
-
+            <td><?php echo $data['Assignment']; ?></td>
+            <td><?php echo $data['class_participation']; ?></td>
+            <td><?php echo $data['Case_Study']; ?></td>
+            <td><?php echo $data['Surprise_Test_01']; ?></td>
+            <td><?php echo $data['Converted']; ?></td>
+            <td><?php echo $data['Surprise_Test_02']; ?></td>
+            <td><?php echo $data['converted_surprise_test_2']; ?></td>
+            <td><?php echo $data['Total']; ?></td>
 
           </tr>
 

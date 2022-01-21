@@ -38,7 +38,7 @@ class HandleLogin extends BaseController
         $userLoginModel = new userLoginModel();
 
         $_SESSION['user'] = $userEmail;
-
+        $_SESSION['prn_no']= $userEmail;
 
 
 
@@ -89,9 +89,7 @@ class HandleLogin extends BaseController
     public function storeUserDetails()
     {
         $trisemester = $this->request->getVar("trisemester");
-        $branch = $this->request->getVar("branch");
-        $division = $this->request->getVar("division");
-
+      
 
 
         // $model=new excel_model();
@@ -102,9 +100,7 @@ class HandleLogin extends BaseController
 
         // $row['data']=$query->findAll();        
 
-        $_SESSION['trisemester'] = $trisemester;
-        $_SESSION['branch'] = $branch;
-        $_SESSION['division'] = $division;
+        
 
         return view('show_Data');
     }
