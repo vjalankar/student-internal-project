@@ -150,8 +150,8 @@
 
                   
                 <input type="submit" class="btn btn-primary" value="Upload file" name="submit">
-
-
+                <a class="btn btn-success float-end" onclick="showMsg();"   id="requestMade" href="<?php echo base_url('SuperAdmin/HandleRequest'); ?>" value="Make Request to Super Admin">Make Request to Super Admin</a>    
+                    
 
 
           </form>
@@ -175,6 +175,17 @@
 
   <?php include 'include_files/footer.php' ?>
 
+
+<script>
+
+function showMsg(){
+
+alert('request has send to admin,please come back later');
+
+
+}
+
+</script>
 
 </body>
 

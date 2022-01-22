@@ -120,7 +120,7 @@ class HomeAdmin extends BaseController
 
     if ($result == 1) {
 
-      $_SESSION['prn_no'];
+    
       return redirect()->to(base_url('/Admin/AdminDashboard'));
     } 
     else {

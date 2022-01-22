@@ -20,18 +20,39 @@
 
     <br>
 
+
+
+<div class="alert alert-light"><?php 
+
+try{
+$msg=$_SESSION['request'];
+echo "<h5 class='text-center text-dark'>$msg</h5>";
+
+}
+
+catch(ErrorException $e)
+{
+   echo "<h3 class='text-center'>Enter Data</h3>";
+}
+
+
+?></div>
+
+
+
     <div class="shadow p-4">
 
 
 
       <div class="row ">
 
-        <div class="col-md-6 mx-auto my-auto">
+        <div class="col-md-6  mx-auto my-auto">
 
-          <h3 class="h3 text-center">Enter Details</h3>
           <hr>
 
           <form class="form" action="<?php echo base_url("SuperAdmin/addDetails"); ?>" method="POST">
+
+
 
             <h4 class="h5">Enter Year -: </h4>
             <br>

@@ -8,6 +8,12 @@ class SuperAdmin extends BaseController
     public function index()
     {
         return view('Admin/super_Admin_dashboard');
+        
+    }
+
+
+    public function __construct(){
+        session_start();
     }
 
     public function addDetails(){
@@ -42,6 +48,17 @@ class SuperAdmin extends BaseController
     }
 
 
+public function handleRequest()
+{
 
+    $msg="A new request is made to enter data";
+    $_SESSION['request']=$msg;
+
+
+    
+    return redirect()->to(base_url('/Admin/AdminDashboard'));
+
+
+}
 
 }
