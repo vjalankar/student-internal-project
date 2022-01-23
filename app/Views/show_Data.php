@@ -21,7 +21,24 @@
 
 
 
-  <br>
+ 
+
+  <div class="card">
+
+<div class="card-body popover-header">
+
+  <h5>Student Name -:demo</h5> 
+
+  <h5>mobile No-:9890478976</h5>
+
+  <h5>Email Id-:Demo@mitwpu.edu.in</h5>
+
+</div>
+
+
+
+  </div>
+
 
 
   <div class="shadow mx-auto my-auto p-5">
@@ -55,7 +72,7 @@
         //echo $prn_no;
 
 
-        if ($prn_no == null) {
+        if (!$_SESSION['prn_no']) {
           echo "login first";
           return redirect()->to(base_url('/Login'));
         }

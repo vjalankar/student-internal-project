@@ -133,4 +133,34 @@ class HomeAdmin extends BaseController
     //   $target_dir = 'uploads/';
      return view('/Admin/Admin_dashboard');
   }
+
+
+  public function searchCourse(){
+
+  $serachCourse=$this->request->getVar("courseSearch");
+  
+  $con=mysqli_connect("localhost", "root", "", "student_internal");
+
+  $query="select branch from superadmin where branch='$serachCourse'";
+  
+  $result=mysqli_query($con, $query);
+
+  if(mysqli_num_rows($result)>=1){
+
+    $row=mysqli_fetch_array($result);
+    return view('/Admin/Admin_dashboard',$row);
+
+  }
+  
+  else{
+
+    mysqli_error($con);
+    echo "<div class='alert alert-warning'>No Data Found</div>";
+
+  }
+
+}
+
+
+
 }

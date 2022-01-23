@@ -11,11 +11,6 @@
 
   <?php include 'include_files/css.php' ?>
 
-
-
-  <!-- Bootstrap CSS -->
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
-
 </head>
 
 <body>
@@ -27,8 +22,57 @@
 
     <br>
 
+    
+
 
     <div class="row mx-auto my-auto">
+
+<div class="col-sm-4">
+
+<div class="card p-4">
+
+<form action="<?php echo base_url('HomeAdmin/searchCourse'); ?>" class="d-flex justify-content-between" method="post">
+
+<input type="text" placeholder="Search Course" name="courseSearch" class="form-control" />
+
+<input type="submit" class="btn btn-outline-success" name="submit" value="Search Course" />
+
+</form>
+
+</div>
+
+</div>
+
+    <table class="table table-bordered ">
+    <h5 class="page-header text-center">Recently Added Courses</h5>
+
+    
+    <hr>
+    <thead>
+    <th>Sr.no</th>
+    <th>Branch</th>
+    </thead>
+    <?php 
+
+    $i=1;
+    
+    $query="select branch from superadmin";
+    $result=$con->query($query);
+    while($row=mysqli_fetch_assoc($result)) {
+
+      ?>
+    <tr>
+
+      <td><?php echo $i++; ?></td>
+      <td><?php echo $row['branch'] ?></td>
+
+    </tr>
+
+    <?php } ?>
+
+    </table>
+
+   
 
 
       <div class="card shadow p-2" style="background:darkgrey">
@@ -148,10 +192,10 @@
                     <input type="file" class="form-control" name="fileToUpload" id="fileToUpload">
                     <br>
 
-                  
-                <input type="submit" class="btn btn-primary" value="Upload file" name="submit">
-                <a class="btn btn-success float-end" onclick="showMsg();"   id="requestMade" href="<?php echo base_url('SuperAdmin/HandleRequest'); ?>" value="Make Request to Super Admin">Make Request to Super Admin</a>    
-                    
+
+                    <input type="submit" class="btn btn-primary" value="Upload file" name="submit">
+                    <a class="btn btn-success float-end" onclick="showMsg();" id="requestMade" href="<?php echo base_url('SuperAdmin/HandleRequest'); ?>" value="Make Request to Super Admin">Make Request to Super Admin</a>
+
 
 
           </form>
@@ -176,16 +220,14 @@
   <?php include 'include_files/footer.php' ?>
 
 
-<script>
+  <script>
+    function showMsg() {
 
-function showMsg(){
-
-alert('request has send to admin,please come back later');
+      alert('request has send to admin,please come back later');
 
 
-}
-
-</script>
+    }
+  </script>
 
 </body>
 
