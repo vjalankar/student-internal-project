@@ -147,8 +147,8 @@ class HomeAdmin extends BaseController
 
   if(mysqli_num_rows($result)>=1){
 
-    $row=mysqli_fetch_array($result);
-    return view('/Admin/Admin_dashboard',$row);
+    $row['data']=mysqli_fetch_array($result);
+    return view('/Admin/show_search_data',$row);
 
   }
   
