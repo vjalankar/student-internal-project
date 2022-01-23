@@ -155,7 +155,18 @@ class HomeAdmin extends BaseController
   else{
 
     mysqli_error($con);
-    echo "<div class='alert alert-warning'>No Data Found</div>";
+    
+   echo "<script>alert('No data Found');
+   
+   </script>";
+
+   echo "<script>
+   window.location.href = '/Admin/AdminDashboard';
+   
+   </script>";
+   
+  //return redirect()->to(base_url('/Admin/AdminDashboard'));
+    
 
   }
 
