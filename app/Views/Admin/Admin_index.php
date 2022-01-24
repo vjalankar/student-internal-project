@@ -45,10 +45,10 @@
  
   <br>
  
- <div class="d-flex justify-content-between">
+ <div >
+<center>
  <input type="submit" name="submit" class="btn btn-outline-primary" value="Login" />
- <button type="reset" class="btn btn-outline-warning">Reset</button>
-
+</center>
  </div>
  
  

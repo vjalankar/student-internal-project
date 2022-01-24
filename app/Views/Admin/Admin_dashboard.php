@@ -76,7 +76,7 @@
 
 
       <div class="card shadow p-2" style="background:darkgrey">
-        <div class="col-sm-6 mx-auto my-auto p-3">
+        <div class="col-sm-8 mx-auto my-auto p-3">
           <form class="form p-1" action="<?php echo site_url('HomeAdmin/upload'); ?>" method="post" enctype="multipart/form-data">
 
 
@@ -214,20 +214,29 @@
 
     </div>
 
-
+   
   </div>
 
-  <?php include 'include_files/footer.php' ?>
-
+ 
 
   <script>
     function showMsg() {
+
+
+      var school=document.getElementById('school').value;
+
+      if(school===''){
+
+        alert('data is already filled...New Request can not be make to admin');
+        
+      }
 
       alert('request has send to admin,please come back later');
 
 
     }
   </script>
+
 
 </body>
 
