@@ -4,6 +4,7 @@
 
 $con= mysqli_connect("localhost", "root", "", "student_internal");
 
+$_SESSION['isRequested']="false";
 ?>
 <head>
   <meta charset="UTF-8">
@@ -30,7 +31,10 @@ $con= mysqli_connect("localhost", "root", "", "student_internal");
  
 <?php 
 
-$sql="select * from adminrequest where isRequested='true'";
+$isRequested=$_SESSION['isRequested']; 
+
+$sql="select * from adminrequest where not   isRequested='$isRequested'";
+
 $res=mysqli_query($con,$sql);
 while($result=mysqli_fetch_array($res))
 
@@ -39,6 +43,7 @@ if(!$result){
 }
 else{
 {
+  $_SESSION['id']=$result['id'];
 ?>
 
 
@@ -48,7 +53,7 @@ else{
 <h4>Following Data is requested by Admin to enter</h4>
 <hr>
 
-
+ 
 <li >Year -:<?php echo $result['year']; ?></li>
 <li >School -:<?php echo $result['school']; ?></li>
 <li >department -:<?php echo $result['department']; ?></li>

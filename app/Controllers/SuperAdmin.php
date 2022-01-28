@@ -9,6 +9,7 @@ class SuperAdmin extends BaseController
     public function index()
     {
         return view('Admin/super_Admin_dashboard');
+        $_SESSION['isRequested']="false";
         
     }
 
@@ -41,7 +42,11 @@ class SuperAdmin extends BaseController
 
          if($model->insert($data)){
              echo "saved";
-         }
+             $con=mysqli_connect("localhost", "root", "", "student_internal");
+             $id=$_SESSION['id'];
+             $query="update adminrequest set isRequested='false'where id='$id'";
+             mysqli_query($con,$query);
+            }
          else{
              echo "failed";
          }
@@ -66,7 +71,11 @@ public function handleAdminRequest(){
     $departmet=$this->request->getVar('Department');
     $subject=$this->request->getVar('subject');
     $trisemester=$this->request->getVar('trisemester');
-    $isRequested="true";
+   // $isRequested="true";
+
+   if(isset($_SESSION['isRequested']) && !empty($_SESSION['isRequested'])){
+    $_SESSION['isRequested']="true";
+   }
 
     $data=array(
 
@@ -75,7 +84,7 @@ public function handleAdminRequest(){
         'department'=>$departmet,
         'subject'=>$subject,
         'trisemester'=>$trisemester,
-        'isRequested'=>$isRequested
+        'isRequested'=>$_SESSION['isRequested']
 
 
 
@@ -99,6 +108,8 @@ else{
     foreach($model->error() as $error){
         echo $error;
     };
+
+    $_SESSION['isRequested'] ="false";
 
     $_SESSION['year']='';
     $_SESSION['school']='';
