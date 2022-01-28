@@ -66,6 +66,7 @@ public function handleAdminRequest(){
     $departmet=$this->request->getVar('Department');
     $subject=$this->request->getVar('subject');
     $trisemester=$this->request->getVar('trisemester');
+    $isRequested="true";
 
     $data=array(
 
@@ -73,7 +74,8 @@ public function handleAdminRequest(){
         'school' =>$school,
         'department'=>$departmet,
         'subject'=>$subject,
-        'trisemester'=>$trisemester
+        'trisemester'=>$trisemester,
+        'isRequested'=>$isRequested
 
 
 
@@ -97,6 +99,13 @@ else{
     foreach($model->error() as $error){
         echo $error;
     };
+
+    $_SESSION['year']='';
+    $_SESSION['school']='';
+    $_SESSION['department']='';
+    $_SESSION['subject']='';
+    $_SESSION['trisemester']='';
+
 }
 }
 

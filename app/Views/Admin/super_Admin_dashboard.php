@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php 
 
+$con= mysqli_connect("localhost", "root", "", "student_internal");
+
+?>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,19 +27,20 @@
 
 
 <div class="alert alert-light">
-  
-<?php  
+ 
+<?php 
 
- $year=$_SESSION['year'];
- $school=$_SESSION['school'];
- $department=$_SESSION['department'];
- $subject=$_SESSION['subject'];
- $trim=$_SESSION['trisemester'];
+$sql="select * from adminrequest where isRequested='true'";
+$res=mysqli_query($con,$sql);
+while($result=mysqli_fetch_array($res))
 
+if(!$result){
 
-  
-
+}
+else{
+{
 ?>
+
 
 
 <div class="card shadow p-4">
@@ -43,16 +48,18 @@
 <h4>Following Data is requested by Admin to enter</h4>
 <hr>
 
-<li >Year -:<?php echo $year; ?></li>
-<li >School -:<?php echo $school; ?></li>
-<li >department -:<?php echo $department; ?></li>
-<li >subject -:<?php echo $subject; ?></li>
-<li >trisemester -:<?php echo $trim; ?></li>
+
+<li >Year -:<?php echo $result['year']; ?></li>
+<li >School -:<?php echo $result['school']; ?></li>
+<li >department -:<?php echo $result['department']; ?></li>
+<li >subject -:<?php echo $result['subject']; ?></li>
+<li >trisemester -:<?php echo $result['trisemester']; ?></li>
 
 
 
 </div>
 
+<?php } } ?> 
 
 </div>
 

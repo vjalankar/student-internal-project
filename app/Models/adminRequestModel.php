@@ -8,7 +8,7 @@ class adminRequestModel extends Model
 {
     
     protected $table="adminrequest";
-    protected $allowedFields=['year','school','department','subject','trisemester'];
+    protected $allowedFields=['year','school','department','subject','trisemester','isRequested'];
 }
 
 ?>
