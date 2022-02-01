@@ -52,7 +52,7 @@ class HandleLogin extends BaseController
 
             return redirect()->to(base_url('/userDashboard'));
         } else {
-            echo "error";
+            echo "<div class='alert alert-info'>Something went wrong.please try again</div>";
         }
     }
 

@@ -41,14 +41,14 @@ class SuperAdmin extends BaseController
         );
 
          if($model->insert($data)){
-             echo "saved";
+             
              $con=mysqli_connect("localhost", "root", "", "student_internal");
              $id=$_SESSION['id'];
              $query="update adminrequest set isRequested='false'where id='$id'";
              mysqli_query($con,$query);
             }
          else{
-             echo "failed";
+             echo "Something Went wrong,Please Go back and try again";
          }
 
 
@@ -94,7 +94,7 @@ public function handleAdminRequest(){
  if($model->save($data))
 {
 
-echo "saved";
+
 $_SESSION['year']=$year;
 $_SESSION['school']=$school;
 $_SESSION['department']=$departmet;
@@ -106,7 +106,9 @@ $_SESSION['trisemester']=$trisemester;
 
 else{
     foreach($model->error() as $error){
-        echo $error;
+        
+        $_SESSION['error']=$error;
+
     };
 
     $_SESSION['isRequested'] ="false";

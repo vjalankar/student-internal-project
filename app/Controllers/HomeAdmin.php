@@ -42,7 +42,7 @@ class HomeAdmin extends BaseController
 
           $reader = IOFactory::createReader("Xlsx");
 
-          $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load("uploads/teacher.xlsx");
+          $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load("$target_file");
           $db      = \Config\Database::connect();
           $builder = $db->table('excel_data');
 
@@ -57,18 +57,18 @@ class HomeAdmin extends BaseController
 
             $data = array();
             for ($i = 1; $i < $sheetCount; $i++) {
-              echo  $Roll_no  = $row[$i][0];
+              $Roll_no  = $row[$i][0];
 
-              echo $prn = $row[$i][1];
-              echo $subjects = $row[$i][2];
-              echo $Assignment = $row[$i][3];
-              echo $class_participation = $row[$i][4];
-              echo $case_study = $row[$i][5];
-              echo $surprise_test_1 = $row[$i][6];
-              echo $converted = $row[$i][7];
-              echo $surprise_test_2 = $row[$i][8];
-              echo $converted_surprise_test_2 = $row[$i][9];
-              echo $Total = $row[$i][10];
+              $prn = $row[$i][1];
+              $subjects = $row[$i][2];
+              $Assignment = $row[$i][3];
+              $class_participation = $row[$i][4];
+              $case_study = $row[$i][5];
+              $surprise_test_1 = $row[$i][6];
+              $converted = $row[$i][7];
+              $surprise_test_2 = $row[$i][8];
+              $converted_surprise_test_2 = $row[$i][9];
+              $Total = $row[$i][10];
 
               // $data[] = array(
 
@@ -124,7 +124,26 @@ class HomeAdmin extends BaseController
       return redirect()->to(base_url('/Admin/AdminDashboard'));
     } 
     else {
-      echo "<div class='alert alert-info'>error</div>";
+
+     
+     
+     
+      echo "
+
+      <center>
+
+      <div style='box-shadow: -2px 6px 5px 0px rgba(255,255,255,0.75);
+      -webkit-box-shadow: -2px 6px 5px 0px rgba(255,255,255,0.75);
+      -moz-box-shadow: -2px 6px 5px 0px rgba(255,255,255,0.75);padding:30px;background:black;color:white' class='shadow p-4'  > 
+      <h3 >Please check your username and password</h3>
+
+      <a href='/admin' class='btn btn-primary' style='float: right'>Go Back</a>
+  </div>
+  
+  </center>
+  ";
+
+  
     }
   }
 
@@ -158,7 +177,7 @@ class HomeAdmin extends BaseController
     
    echo "<script>alert('No data Found');
    
-   </script>";
+   </sc>";
 
    echo "<script>
    window.location.href = '/Admin/AdminDashboard';

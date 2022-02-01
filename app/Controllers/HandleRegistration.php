@@ -38,7 +38,7 @@ class HandleRegistration extends BaseController
         
         }
         else{
-            echo "error";
+            echo "<div class='alert alert-info'>Please Check your Credentials,Can not Login</div>";
         }
 
 

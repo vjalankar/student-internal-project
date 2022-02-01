@@ -27,7 +27,7 @@
 
 <div class="col-md-6 mx-auto my-auto">
 
-<h3 class="h3 text-center">Login</h3>
+<h3 class="h3 text-center">Admin Login</h3>
 
 <form class="form" action="<?php echo site_url('HomeAdmin/Login') ?>" method="POST">
   <div class="mb-3">
