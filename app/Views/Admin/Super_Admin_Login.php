@@ -36,8 +36,12 @@ if(isset($_POST['submit'])){
 
 if($validation)
 {
-    echo $validation->listErrors();
+   
+    $errors = $validation->listErrors();
+    echo "<div class='alert alert-danger'>$errors</div>";
 
+    
+   
    
 
 }
