@@ -8,7 +8,7 @@ class SuperAdmin extends BaseController
 {
     public function index()
     {
-        return view('Admin/super_Admin_dashboard');
+        return view('Admin/Super_Admin_Login');
         $_SESSION['isRequested']="false";
         
     }
@@ -120,6 +120,29 @@ else{
     $_SESSION['trisemester']='';
 
 }
+}
+
+
+
+public function login(){
+
+    helper(['form', 'url']);
+
+    $validation=\Config\Services::validation();
+    $check=$this->validate([
+    
+     'username'=>'required',
+     'password'=>'required|min_length[6]'
+    
+    ]);
+
+    if(!$check){
+
+        return view('Admin/Super_Admin_Login',['validation'=>$this->validator]);
+    }
+    else{
+        return view('Admin/super_Admin_dashboard');
+    }
 }
 
 

@@ -45,7 +45,7 @@ $routes->get('/contact','HandleLogin::contact');
 $routes->get('/About Us','HandleLogin::aboutUs');
 $routes->get('/superAdmin','SuperAdmin::index');
 $routes->get('/adminRequest','SuperAdmin::handleRequest');
-
+$routes->get('/Admin/superAdmin','SuperAdmin::login');
 
 
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {

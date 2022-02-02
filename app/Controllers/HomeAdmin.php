@@ -84,7 +84,13 @@ class HomeAdmin extends BaseController
               $query = "insert into excel_data(Roll_no,prn_no,subjects,Assignment,class_participation ,Case_Study,Surprise_Test_01,Converted,Surprise_Test_02,converted_surprise_test_2,Total) values('$Roll_no','$prn','$subjects','$Assignment','$class_participation','$case_study','$surprise_test_1','$converted','$surprise_test_2','$converted_surprise_test_2','$Total')";
               $result = mysqli_query($con, $query);
               if ($result) {
-                echo "success";
+                echo "<script>alert('File Uploaded Successfully');</script>";
+                echo "<script>
+                window.location.href = '/Admin/AdminDashboard';
+                
+                </script>";
+            
+              
               } else {
                 echo "failed";
                 echo mysqli_error($con);
