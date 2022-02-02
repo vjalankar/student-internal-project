@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\superAdminModel;
 use App\Models\adminRequestModel;
+use App\Models\SuperAdminLoginModel;
 
 class SuperAdmin extends BaseController
 {
@@ -141,7 +142,37 @@ public function login(){
         return view('Admin/Super_Admin_Login',['validation'=>$this->validator]);
     }
     else{
+
+        $username=$this->request->getVar('username');
+        $password=$this->request->getVar('password');
+        $superAdminLoginModel=new SuperAdminLoginModel();
+        $data = array('username' => $username, 'password' => $password);
+
+    $query = $superAdminLoginModel->where($data);
+
+    $result = $superAdminLoginModel->countAllResults();
+
+    if($result==1){
+
         return view('Admin/super_Admin_dashboard');
+    }
+
+    else{
+
+        echo "<script>alert('Please Check your Credentials');
+   
+   </script>";
+
+   echo "<script>
+   window.location.href = '/Admin/superAdmin';
+   
+   </script>";
+   
+    
+    }
+
+
+
     }
 }
 

@@ -183,7 +183,7 @@ class HomeAdmin extends BaseController
     
    echo "<script>alert('No data Found');
    
-   </sc>";
+   </script>";
 
    echo "<script>
    window.location.href = '/Admin/AdminDashboard';
