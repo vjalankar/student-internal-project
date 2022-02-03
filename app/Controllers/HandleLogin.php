@@ -25,6 +25,7 @@ class HandleLogin extends BaseController
         $row['data'] = $model->findAll();
 
 
+
         return view('userLogin', $row);
     }
 
@@ -38,7 +39,8 @@ class HandleLogin extends BaseController
         $userLoginModel = new userLoginModel();
 
         $_SESSION['user'] = $userEmail;
-        $_SESSION['prn_no']= $userEmail;
+        $_SESSION['prn_no'] = $userEmail;
+
 
 
 
@@ -77,6 +79,17 @@ class HandleLogin extends BaseController
     public function showUserDashboard()
     {
 
+        try {
+            if ($_SESSION['prn_no'] == 'undefined') {
+
+                return redirect()->to(base_url('/'));
+            }
+        } 
+        catch (\ErrorException $e) {
+            return redirect()->to(base_url('/'));
+        }
+
+
         $Model = new excel_model();
         $row['data'] = $Model->findAll();
 
@@ -89,7 +102,7 @@ class HandleLogin extends BaseController
     public function storeUserDetails()
     {
         $trisemester = $this->request->getVar("trisemester");
-      
+
 
 
         // $model=new excel_model();
@@ -100,7 +113,7 @@ class HandleLogin extends BaseController
 
         // $row['data']=$query->findAll();        
 
-        
+
 
         return view('show_Data');
     }

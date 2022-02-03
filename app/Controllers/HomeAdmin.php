@@ -155,6 +155,17 @@ class HomeAdmin extends BaseController
 
   public function showAdminDashboard()
   {
+
+    try {
+      if ($_SESSION['user'] == 'undefined') {
+
+          return redirect()->to(base_url('/'));
+      }
+  } 
+  catch (\ErrorException $e) {
+      $_SESSION['msg']="Please Log in first";
+      return redirect()->to(base_url('/'));
+  }
     //   $target_dir = 'uploads/';
      return view('/Admin/Admin_dashboard');
   }

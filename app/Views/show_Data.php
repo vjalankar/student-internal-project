@@ -5,9 +5,9 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width", initial-scale=1.0">
+  <meta name="viewport" content="width" , initial-scale=1.0">
   <title>Student Portal</title>
-  
+
   <?php include 'include_files/css.php' ?>
 
 </head>
@@ -18,17 +18,17 @@
 
   <br>
 
-<div class="card">
+  <div class="card">
 
-<div class="card-body popover-header">
+    <div class="card-body popover-header">
 
-  <h5>Student Name -:demo</h5> 
+      <h5>Student Name -:demo</h5>
 
-  <h5>mobile No-:9890478976</h5>
+      <h5>mobile No-:9890478976</h5>
 
-  <h5>Email Id-:Demo@mitwpu.edu.in</h5>
+      <h5>Email Id-:Demo@mitwpu.edu.in</h5>
 
-</div>
+    </div>
 
 
 
@@ -56,9 +56,9 @@
           <th scope="col">Surprise Test 2 Marks Converted</th>
           <th scope="col">Total</th>
 
-    </tr>
-    </thead>
-    <tbody>
+        </tr>
+      </thead>
+      <tbody>
         <?php
 
         $con = mysqli_connect("localhost", "root", "", "student_internal");
@@ -74,17 +74,34 @@
 
         $query = "select * from excel_data where prn_no='$prn_no'";
 
-         
+
 
         $i = 1;
 
         $result = mysqli_query($con, $query);
 
+        if ($result != 1) {
+          echo "<div class='alert alert-warning'>No data to display.</div>";
+        }
+
+
+        if (mysqli_num_rows($result) == 0)
+
+          echo "<div class='alert alert-warning text-center'>No data to display.</div>";
+
+
         mysqli_error($con);
 
 
-        while ($data = mysqli_fetch_array($result)) { ?>
-        <tr>
+        while ($data = mysqli_fetch_array($result)) {
+
+
+
+
+
+
+        ?>
+          <tr>
             <td><?php echo $i++; ?></td>
             <td><?php echo $data['subjects']; ?></td>
             <td><?php echo $data['Assignment']; ?></td>
@@ -96,7 +113,7 @@
             <td><?php echo $data['converted_surprise_test_2']; ?></td>
             <td><?php echo $data['Total']; ?></td>
 
-        </tr>
+          </tr>
 
         <?php } ?>
       </tbody>

@@ -2,6 +2,7 @@
 <?php
 
 $con = mysqli_connect("localhost", "root", "", "student_internal");?>
+
 <html lang="en">
 
 <head>
