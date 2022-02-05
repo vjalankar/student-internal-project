@@ -28,11 +28,10 @@ class SuperAdmin extends BaseController
 
                 return redirect()->to(base_url('/'));
             }
-        } 
-        catch (\ErrorException $e) {
+        } catch (\ErrorException $e) {
             return redirect()->to(base_url('/'));
         }
-            
+
 
 
         $model = new superAdminModel();
@@ -58,17 +57,38 @@ class SuperAdmin extends BaseController
         if ($model->insert($data)) {
 
             $con = mysqli_connect("localhost", "root", "", "student_internal");
+            if(isset($_SESSION['id'])){
             $id = $_SESSION['id'];
             $query = "update adminrequest set isRequested='false'where id='$id'";
             mysqli_query($con, $query);
+            }
+            echo "<script>alert('Data Inserted Successfully');</script>";
+
+            $data['data']=array('success'=>'Data Saved Successfully');
+            return view('admin/super_Admin_dashboard',$data);
+ 
+        
         } else {
-            echo "Something Went wrong,Please Go back and try again";
+            echo "<script>alert('Something Went wrong,Please Go back and try again');</script>";
+
+            echo "<script>
+   window.location.href = '/superAdminDashboard';
+   
+   </script>";
         }
     }
 
 
     public function handleRequest()
     {
+        try {
+            if ($_SESSION['username'] == 'undefined') {
+
+                return redirect()->to(base_url('/'));
+            }
+        } catch (\ErrorException $e) {
+            return redirect()->to(base_url('/'));
+        }
 
         return view('Admin/adminRequestToSuperAdmin');
     }
@@ -97,7 +117,7 @@ class SuperAdmin extends BaseController
             'subject' => $subject,
             'trisemester' => $trisemester,
             'isRequested' => $_SESSION['isRequested']
-);
+        );
 
         if ($model->save($data)) {
 
@@ -143,13 +163,13 @@ class SuperAdmin extends BaseController
             return view('Admin/Super_Admin_Login', ['validation' => $this->validator]);
         } else {
 
-            
+
             $username = $this->request->getVar('username');
             $password = $this->request->getVar('password');
             $superAdminLoginModel = new SuperAdminLoginModel();
             $data = array('username' => $username, 'password' => $password);
 
-            $_SESSION['username']=$username;
+            $_SESSION['username'] = $username;
 
 
             $query = $superAdminLoginModel->where($data);
@@ -159,7 +179,8 @@ class SuperAdmin extends BaseController
             if ($result == 1) {
 
                 return view('Admin/super_Admin_dashboard');
-            } else {
+            } 
+            else {
 
                 echo "<script>alert('Please Check your Credentials');
    

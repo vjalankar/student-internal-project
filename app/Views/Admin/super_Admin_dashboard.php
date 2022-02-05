@@ -78,6 +78,30 @@ else{
 
         <div class="col-md-6  mx-auto my-auto">
 
+       
+         <?php  
+          
+         if(empty($data))
+         {
+
+
+         } 
+      
+         else{
+          foreach($data as $key){
+
+            echo "<div class='alert alert-success'> 
+            
+            
+             '$key'
+            
+               
+            </div>";
+          }
+          }
+
+
+        ?>
           <hr>
 
           <form class="form" action="<?php echo base_url("SuperAdmin/addDetails"); ?>" method="POST">

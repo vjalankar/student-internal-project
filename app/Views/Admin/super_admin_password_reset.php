@@ -51,26 +51,48 @@ if($validation)
 ?>
 
 <form class="form" action="<?php echo site_url('SuperAdmin/Login') ?>"  method="POST">
-  <div class="mb-3">
-    Enter Email -: 
+
+<h3 class="h3">Password Reset</h3>
+
+
+<div class="mb-3">
+
+
+
+    Enter Old Password -: 
     <br>
-    <input type="email" required  name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="password" required  name="old_password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+
+
+</div>
+
+
+
+<div class="mb-3">
+
+
+
+    Enter New Password -: 
+    <br>
+    <input type="password" required  name="new_password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
+  
   <div class="mb-3">
   
-  Enter Password -:
+  Confirm Password -:
   <br>
-  <input type="password" required name="password" class="form-control" id="password_reg">
+  <input type="password" required name="cpassword" class="form-control" id="password_reg">
   </div>
  
   <br>
  
- <div>
-
+ <div >
+<center>
  <input type="submit" name="submit" class="btn btn-outline-primary" value="Login" />
- 
-</div>
+</center>
+ </div>
  
  
 </form> 
@@ -99,7 +121,6 @@ if($validation)
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
-<!-- MDB -->
 
            
 </body>
