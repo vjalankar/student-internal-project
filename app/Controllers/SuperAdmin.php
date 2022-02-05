@@ -26,10 +26,10 @@ class SuperAdmin extends BaseController
         try {
             if ($_SESSION['username'] == 'undefined') {
 
-                return redirect()->to(base_url('/'));
+                return redirect()->to(base_url('/superAdmin/'));
             }
         } catch (\ErrorException $e) {
-            return redirect()->to(base_url('/'));
+            return redirect()->to(base_url('/superAdmin/'));
         }
 
 
@@ -84,10 +84,10 @@ class SuperAdmin extends BaseController
         try {
             if ($_SESSION['username'] == 'undefined') {
 
-                return redirect()->to(base_url('/'));
+                return redirect()->to(base_url('/superAdmin/'));
             }
         } catch (\ErrorException $e) {
-            return redirect()->to(base_url('/'));
+            return redirect()->to(base_url('/superAdmin/'));
         }
 
         return view('Admin/adminRequestToSuperAdmin');
@@ -95,6 +95,14 @@ class SuperAdmin extends BaseController
 
     public function handleAdminRequest()
     {
+        try {
+            if ($_SESSION['username'] == 'undefined') {
+
+                return redirect()->to(base_url('/superAdmin/'));
+            }
+        } catch (\ErrorException $e) {
+            return redirect()->to(base_url('/superAdmin/'));
+        }
 
         $model = new adminRequestModel();
 

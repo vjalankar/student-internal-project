@@ -54,7 +54,9 @@ class HandleLogin extends BaseController
 
             return redirect()->to(base_url('/userDashboard'));
         } else {
-            echo "<div class='alert alert-info'>Something went wrong.please try again</div>";
+        
+            $data['data']=array('success'=>"<div class='alert alert-danger text-center'>Please Check you credentails</div>");
+            return view('userLogin',$data);
         }
     }
 

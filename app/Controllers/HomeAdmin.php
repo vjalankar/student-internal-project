@@ -16,6 +16,11 @@ class HomeAdmin extends BaseController
   }
 
 
+  public function __construct()
+  {
+    session_start();
+  }
+
   public function upload()
   {
     $target_dir = 'uploads/';
@@ -124,32 +129,21 @@ class HomeAdmin extends BaseController
 
     $result = $AdminLoginModel->countAllResults();
 
-    if ($result == 1) {
+    $_SESSION['user']=$adminEmail;
 
     
+    if ($result == 1) {
+
+      
       return redirect()->to(base_url('/Admin/AdminDashboard'));
     } 
     else {
 
      
+      $data['data']=array('success'=>"<div class='alert alert-danger text-center'>Please Check you credentails</div>");
+      return view('Admin/Admin_index',$data);
      
      
-      echo "
-
-      <center>
-
-      <div style='box-shadow: -2px 6px 5px 0px rgba(255,255,255,0.75);
-      -webkit-box-shadow: -2px 6px 5px 0px rgba(255,255,255,0.75);
-      -moz-box-shadow: -2px 6px 5px 0px rgba(255,255,255,0.75);padding:30px;background:black;color:white' class='shadow p-4'  > 
-      <h3 >Please check your username and password</h3>
-
-      <a href='/admin' class='btn btn-primary' style='float: right'>Go Back</a>
-  </div>
-  
-  </center>
-  ";
-
-  
     }
   }
 
@@ -159,15 +153,17 @@ class HomeAdmin extends BaseController
     try {
       if ($_SESSION['user'] == 'undefined') {
 
-          return redirect()->to(base_url('/'));
+        return redirect()->to(base_url('/admin/'));
+    
       }
   } 
   catch (\ErrorException $e) {
       $_SESSION['msg']="Please Log in first";
-      return redirect()->to(base_url('/'));
+      return redirect()->to(base_url('/admin/'));
   }
     //   $target_dir = 'uploads/';
-     return view('/Admin/Admin_dashboard');
+    
+    return view('/Admin/Admin_dashboard');
   }
 
 

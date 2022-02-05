@@ -20,11 +20,30 @@
 
       <div class="col-md-6 mx-auto my-auto shadow p-5">
 
+      <?php  
+    
+      if(isset($_POST['submit'])){
+      
+          if(empty($data)){
+
+          }
+
+          else{
+
+              echo $data['success'];
+          }
+        
+      
+      }
+      
+      ?>
+       
+
         <h3 class="h3 text-center">Login</h3>
 
         <form class="form" action="<?php echo site_url('HandleLogin/Login') ?>" method="POST">
           <div class="mb-3">
-            Enter Email -:
+            Enter PRN No -:
             <br>
             <input type="text" required name="userEmail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>

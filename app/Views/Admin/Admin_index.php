@@ -30,6 +30,27 @@
 
 <h3 class="h3 text-center">Admin Login</h3>
 
+<?php  
+    
+    if(isset($_POST['submit'])){
+    
+        if(empty($data)){
+
+        }
+
+        else{
+
+            echo $data['success'];
+        }
+      
+    
+    }
+    
+    ?>
+     
+
+
+
 <form class="form" action="<?php echo site_url('HomeAdmin/Login') ?>" method="POST">
   <div class="mb-3">
     Enter Email -: 
