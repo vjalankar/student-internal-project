@@ -31,6 +31,28 @@
 
 <div class="card p-4">
 
+<?php  
+    
+    if(isset($_POST['submit'])){
+    
+        if(empty($data)){
+
+        }
+
+        else{
+
+            echo $data['success'];
+        }
+      
+    
+    }
+    
+    ?>
+
+
+
+
+
 <form action="<?php echo base_url('HomeAdmin/searchCourse'); ?>" class="d-flex justify-content-between" method="post">
 
 <input type="text" placeholder="Search Course" name="courseSearch" class="form-control" />

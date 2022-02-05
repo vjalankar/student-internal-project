@@ -24,7 +24,7 @@ class SuperAdmin extends BaseController
     {
 
         try {
-            if ($_SESSION['username'] == 'undefined') {
+            if ($_SESSION['SuperAdminUsername'] == 'undefined') {
 
                 return redirect()->to(base_url('/superAdmin/'));
             }
@@ -81,28 +81,21 @@ class SuperAdmin extends BaseController
 
     public function handleRequest()
     {
-        try {
-            if ($_SESSION['username'] == 'undefined') {
+        // try {
+        //     if ($_SESSION['SuperAdminUsername'] == 'undefined') {
 
-                return redirect()->to(base_url('/superAdmin/'));
-            }
-        } catch (\ErrorException $e) {
-            return redirect()->to(base_url('/superAdmin/'));
-        }
+        //         return redirect()->to(base_url('/superAdmin/'));
+        //     }
+        // } catch (\ErrorException $e) {
+        //     return redirect()->to(base_url('/superAdmin/'));
+        // }
 
         return view('Admin/adminRequestToSuperAdmin');
     }
 
     public function handleAdminRequest()
     {
-        try {
-            if ($_SESSION['username'] == 'undefined') {
-
-                return redirect()->to(base_url('/superAdmin/'));
-            }
-        } catch (\ErrorException $e) {
-            return redirect()->to(base_url('/superAdmin/'));
-        }
+        
 
         $model = new adminRequestModel();
 
@@ -129,12 +122,20 @@ class SuperAdmin extends BaseController
 
         if ($model->save($data)) {
 
-
+            
             $_SESSION['year'] = $year;
             $_SESSION['school'] = $school;
             $_SESSION['department'] = $departmet;
             $_SESSION['subject'] = $subject;
             $_SESSION['trisemester'] = $trisemester;
+
+            $data['data']=array('success'=>"<div class='alert alert-success'>Request Send Successfully</div>");
+            return view('Admin/Admin_dashboard',$data);
+            
+
+            
+
+
         } else {
             foreach ($model->error() as $error) {
 
@@ -177,7 +178,7 @@ class SuperAdmin extends BaseController
             $superAdminLoginModel = new SuperAdminLoginModel();
             $data = array('username' => $username, 'password' => $password);
 
-            $_SESSION['username'] = $username;
+            $_SESSION['SuperAdminUsername'] = $username;
 
 
             $query = $superAdminLoginModel->where($data);
