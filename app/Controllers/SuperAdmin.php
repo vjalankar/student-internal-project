@@ -120,15 +120,20 @@ class SuperAdmin extends BaseController
         );
 
         if ($model->save($data)) {
-
-            
             $_SESSION['year'] = $year;
             $_SESSION['school'] = $school;
             $_SESSION['department'] = $departmet;
             $_SESSION['subject'] = $subject;
             $_SESSION['trisemester'] = $trisemester;
 
-            $data['data']=array('success'=>"<div class='alert alert-success'>Request Send Successfully</div>");
+            $data['data']=array('success'=>"<div class='alert alert-success alert-dismissible fade show' role='alert'>Request Send Successfully
+            
+            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    <span aria-hidden='true'>&times;</span>
+  </button>
+            
+            
+            </div>");
             return view('Admin/Admin_dashboard',$data);
             
 
