@@ -31,14 +31,12 @@ class HomeAdmin extends BaseController
     // Check if image file is a actual image or fake image
     if (isset($_POST["submit"])) {
 
-     if ($uploadOk == 0) {
+      if ($uploadOk == 0) {
         echo "<script>
   
   alert('Sorry, your file was not uploaded')
   </script>";
-      } 
-      
-      else {
+      } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
           echo "<script>
     
@@ -62,8 +60,7 @@ class HomeAdmin extends BaseController
           if ($sheetCount > 1) {
 
             $data = array();
-            for ($i = 1; $i < $sheetCount; $i++) 
-            {
+            for ($i = 1; $i < $sheetCount; $i++) {
               $Roll_no  = $row[$i][0];
 
               $prn = $row[$i][1];
@@ -96,26 +93,18 @@ class HomeAdmin extends BaseController
                 window.location.href = '/Admin/AdminDashboard';
                 
                 </script>";
-            
-              
-              } 
-              else {
+              } else {
 
-                $file['file']=array('failed'=>"<div class='alert alert-danger text-center'>File Can not be uploaded</div>");
-                return view('Admin/Admin_dashboard',$file);
-               
-               
-                
+                $file['file'] = array('failed' => "<div class='alert alert-danger text-center'>File Can not be uploaded</div>");
+                return view('Admin/Admin_dashboard', $file);
+
+
+
                 echo mysqli_error($con);
               }
             }
           }
         }
-
-
-
-        
-
       }
     }
   }
@@ -126,7 +115,7 @@ class HomeAdmin extends BaseController
     $adminEmail = $this->request->getVar("userEmail");
     $adminPassword = $this->request->getVar("userPassword");
 
-    
+
 
     $AdminLoginModel = new AdminLoginModel();
 
@@ -137,21 +126,18 @@ class HomeAdmin extends BaseController
 
     $result = $AdminLoginModel->countAllResults();
 
-    $_SESSION['user']=$adminEmail;
+    $_SESSION['user'] = $adminEmail;
 
-    
+
     if ($result == 1) {
 
-      
-      return redirect()->to(base_url('/Admin/AdminDashboard'));
-    } 
-    else {
 
-     
-      $data['data']=array('success'=>"<div class='alert alert-danger text-center'>Please Check you credentails</div>");
-      return view('Admin/Admin_index',$data);
-     
-     
+      return redirect()->to(base_url('/Admin/AdminDashboard'));
+    } else {
+
+
+      $data['data'] = array('success' => "<div class='alert alert-danger text-center'>Please Check you credentails</div>");
+      return view('Admin/Admin_index', $data);
     }
   }
 
@@ -162,56 +148,48 @@ class HomeAdmin extends BaseController
       if ($_SESSION['user'] == 'undefined') {
 
         return redirect()->to(base_url('/admin/'));
-    
       }
-  } 
-  catch (\ErrorException $e) {
-      $_SESSION['msg']="Please Log in first";
+    } catch (\ErrorException $e) {
+      $_SESSION['msg'] = "Please Log in first";
       return redirect()->to(base_url('/admin/'));
-  }
+    }
     //   $target_dir = 'uploads/';
-    
+
     return view('/Admin/Admin_dashboard');
   }
 
 
-  public function searchCourse(){
+  public function searchCourse()
+  {
 
-  $serachCourse=$this->request->getVar("courseSearch");
-  
-  $con=mysqli_connect("localhost", "root", "", "student_internal");
+    $serachCourse = $this->request->getVar("courseSearch");
 
-  $query="select branch from superadmin where branch='$serachCourse'";
-  
-  $result=mysqli_query($con, $query);
+    $con = mysqli_connect("localhost", "root", "", "student_internal");
 
-  if(mysqli_num_rows($result)>=1){
+    $query = "select branch from superadmin where branch='$serachCourse'";
 
-    $row['data']=mysqli_fetch_array($result);
-    return view('/Admin/show_search_data',$row);
+    $result = mysqli_query($con, $query);
 
-  }
-  
-  else{
+    if (mysqli_num_rows($result) >= 1) {
 
-    mysqli_error($con);
-    
-   echo "<script>alert('No data Found');
+      $row['data'] = mysqli_fetch_array($result);
+      return view('/Admin/show_search_data', $row);
+    } else {
+
+      mysqli_error($con);
+
+      echo "<script>alert('No data Found');
    
    </script>";
 
-   echo "<script>
+      echo "<script>
    window.location.href = '/Admin/AdminDashboard';
    
    </script>";
-   
-  //return redirect()->to(base_url('/Admin/AdminDashboard'));
-    
 
+      //return redirect()->to(base_url('/Admin/AdminDashboard'));
+
+
+    }
   }
-
-}
-
-
-
 }
