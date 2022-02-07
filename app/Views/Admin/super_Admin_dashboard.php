@@ -33,7 +33,7 @@ $_SESSION['isRequested']="false";
 
 $isRequested=$_SESSION['isRequested']; 
 
-$sql="select * from adminrequest where not   isRequested='$isRequested'";
+$sql="select * from adminrequest where not  isRequested='$isRequested'";
 
 $res=mysqli_query($con,$sql);
 while($result=mysqli_fetch_array($res))
@@ -88,20 +88,36 @@ else{
          } 
       
          else{
-          foreach($data as $key){
-
-            echo "<div class='alert alert-success'> 
-            
-            
-             '$key'
-            
-               
-            </div>";
+         
+          echo $data['success'];
+         
           }
-          }
+          
 
 
         ?>
+
+
+<?php  
+    
+    if(isset($_POST['submit'])){
+    
+        if(empty($E)){
+
+        }
+
+        else{
+
+            echo $error['failed'];
+        }
+      
+    
+    }
+    
+    ?>
+
+
+
           <hr>
 
           <form class="form" action="<?php echo base_url("SuperAdmin/addDetails"); ?>" method="POST">

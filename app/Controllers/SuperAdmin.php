@@ -54,27 +54,30 @@ class SuperAdmin extends BaseController
             'subject10' => $this->request->getVar("subject10"),
         );
 
-        if ($model->insert($data)) {
+$result=$model->save($data);
 
+echo $result;
+
+        if ($result!=1) {
+
+            
             $con = mysqli_connect("localhost", "root", "", "student_internal");
             if(isset($_SESSION['id'])){
             $id = $_SESSION['id'];
             $query = "update adminrequest set isRequested='false'where id='$id'";
             mysqli_query($con, $query);
             }
-            echo "<script>alert('Data Inserted Successfully');</script>";
-
-            $data['data']=array('success'=>'Data Saved Successfully');
+          
+            $data['data']=array('success'=>"<div class='alert alert-success text-center'>Data Saved Successfully</div>");
             return view('admin/super_Admin_dashboard',$data);
  
         
         } else {
-            echo "<script>alert('Something Went wrong,Please Go back and try again');</script>";
-
-            echo "<script>
-   window.location.href = '/superAdminDashboard';
-   
-   </script>";
+            
+            echo "<script>alert('error')</script>";
+            $error['failed']=array('failed'=>"<div class='alert alert-danger text-center'>Something Went Wrong.Please Try Again</div>");
+            return view('Admin/super_Admin_dashboard',$error);
+ 
         }
     }
 
