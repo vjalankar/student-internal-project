@@ -44,14 +44,6 @@
     
     ?>
 
-
-
-
-
-<div class="col-sm-4">
-
-<div class="card p-4">
-
 <?php  
     
     if(isset($_POST['submit'])){
@@ -70,6 +62,14 @@
     
     ?>
 
+
+
+
+
+
+<div class="col-sm-4">
+
+<div class="card p-4">
 
 
 
