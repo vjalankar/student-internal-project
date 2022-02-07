@@ -93,7 +93,7 @@ class SuperAdmin extends BaseController
         return view('Admin/adminRequestToSuperAdmin');
     }
 
-    public function handleAdminRequest()
+    public function HandleAdminRequest()
     {
         
 
@@ -104,11 +104,10 @@ class SuperAdmin extends BaseController
         $departmet = $this->request->getVar('Department');
         $subject = $this->request->getVar('subject');
         $trisemester = $this->request->getVar('trisemester');
-        // $isRequested="true";
+        //$isRequested="true";
 
-        if (isset($_SESSION['isRequested']) && !empty($_SESSION['isRequested'])) {
             $_SESSION['isRequested'] = "true";
-        }
+        
 
         $data = array(
 

@@ -26,6 +26,27 @@
 
 
     <div class="row mx-auto my-auto">
+    <?php  
+    
+    if(isset($_POST['submit'])){
+    
+        if(empty($file)){
+
+        }
+
+        else{
+
+            echo $file['failed'];
+        }
+      
+    
+    }
+    
+    ?>
+
+
+
+
 
 <div class="col-sm-4">
 
@@ -216,7 +237,7 @@
 
 
                     <input type="submit" class="btn btn-primary" value="Upload file" name="submit">
-                    <a class="btn btn-success float-end" onclick="showMsg();" id="requestMade" href="<?php echo base_url('SuperAdmin/HandleRequest'); ?>" value="Make Request to Super Admin">Make Request to Super Admin</a>
+                    <a class="btn btn-success float-end" onclick="showMsg();" id="requestMade" href="<?php echo base_url('SuperAdmin/handleRequest'); ?>" value="Make Request to Super Admin">Make Request to Super Admin</a>
 
 
 

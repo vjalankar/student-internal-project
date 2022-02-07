@@ -31,14 +31,14 @@ class HomeAdmin extends BaseController
     // Check if image file is a actual image or fake image
     if (isset($_POST["submit"])) {
 
-
-
-      if ($uploadOk == 0) {
+     if ($uploadOk == 0) {
         echo "<script>
   
   alert('Sorry, your file was not uploaded')
   </script>";
-      } else {
+      } 
+      
+      else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
           echo "<script>
     
@@ -62,7 +62,8 @@ class HomeAdmin extends BaseController
           if ($sheetCount > 1) {
 
             $data = array();
-            for ($i = 1; $i < $sheetCount; $i++) {
+            for ($i = 1; $i < $sheetCount; $i++) 
+            {
               $Roll_no  = $row[$i][0];
 
               $prn = $row[$i][1];
@@ -97,8 +98,14 @@ class HomeAdmin extends BaseController
                 </script>";
             
               
-              } else {
-                echo "failed";
+              } 
+              else {
+
+                $file['file']=array('failed'=>"<div class='alert alert-danger text-center'>File Can not be uploaded</div>");
+                return view('Admin/Admin_dashboard',$file);
+               
+               
+                
                 echo mysqli_error($con);
               }
             }

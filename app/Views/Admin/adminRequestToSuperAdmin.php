@@ -35,7 +35,13 @@
     ?> 
 
 
-    <form action="<?php echo base_url('SuperAdmin/HandleAdminRequest') ?>" method="post" enctype="multipart/form" >
+
+<div class="card shadow col-sm-6 mx-auto my-auto p-5">
+
+<h4>Enter Details -:</h4>
+<hr>
+
+<form action="<?php echo base_url('SuperAdmin/HandleAdminRequest') ?>" method="post" enctype="multipart/form" >
     
       Enter Year-:
       <input type="text" required="true" name="year" id="year" class="form-control" placeholder="Enter year"/>  
@@ -64,13 +70,15 @@
 
       <br> 
 
-      <input type="submit" required="true" class="btn btn-primary" name="submit" value="Submit Details" />
+  <center>    <input type="submit" required="true" class="btn btn-primary" name="submit" value="Submit Details" /> </center>
 
     </form>
       
-    
+</div>
     </div>
     </div>
 
+
+    <?php include 'include_files/footer.php'; ?>
     </body>
 </html>
